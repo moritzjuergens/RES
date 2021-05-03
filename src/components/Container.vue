@@ -13,7 +13,6 @@ export default {
   max-width: 100%;
   height: fit-content;
   min-height: 300px;
-  margin: 25px;
   border-radius: 10px;
 
   background: var(--bg);
