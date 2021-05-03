@@ -4,7 +4,7 @@
       <h1>Welcome to RES</h1>
       <p>The Resumé Evaluation System</p>
     </div>
-    <div class="grid">
+    <div class="grid" id="resume">
       <container class="jumbo">
         <h4>ADD YOUR RESUMÉ</h4>
         <span class="subtext">(PDF)</span>

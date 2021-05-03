@@ -2,7 +2,7 @@
   <nav class="navbar">
     <h1 class="navbar__brand"><router-link to="/">RES</router-link></h1>
     <ul class="navbar__links">
-      <li><router-link to="/">Test</router-link></li>
+      <li @click="goToResume"><router-link to="/">App</router-link></li>
       <li><router-link to="/">Test</router-link></li>
       <li><router-link to="/about">About</router-link></li>
     </ul>
@@ -40,6 +40,9 @@ export default {
       this.theme = this.theme == "darkMode" ? "" : "darkMode"; //toggles theme value
       document.documentElement.setAttribute("data-theme", this.theme); // sets the data-theme attribute
       localStorage.setItem("theme", this.theme); // stores theme value on local storage
+    },
+    goToResume: function () {
+      window.scroll(0, 600);
     },
   },
 };
