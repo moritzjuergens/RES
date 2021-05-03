@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar">
-    <h1 class="navbar__brand"><a href="/">RES</a></h1>
+    <h1 class="navbar__brand"><router-link to="/">RES</router-link></h1>
     <ul class="navbar__links">
-      <li><a href="#">Test</a></li>
-      <li><a href="#">Test</a></li>
-      <li><a href="#">Test</a></li>
+      <li><router-link to="/">Test</router-link></li>
+      <li><router-link to="/">Test</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
     </ul>
     <ul class="navbar__links">
       <li>

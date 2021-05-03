@@ -2,14 +2,17 @@
   <div id="app">
     <NavBar />
     <router-view />
+    <Footer></Footer>
   </div>
 </template>
 <script>
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   name: "App",
   components: {
     NavBar,
+    Footer,
   },
 };
 </script>
@@ -31,19 +34,8 @@ body {
 
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background: #7f7fd5; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #91eae4,
-    #86a8e7,
-    #7f7fd5
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #91eae4,
-    #86a8e7,
-    #7f7fd5
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 // @media (prefers-color-scheme: dark) {
 //   body {
