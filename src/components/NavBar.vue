@@ -1,16 +1,47 @@
 <template>
   <nav class="navbar">
-    <h1 class="navbar__brand">RES</h1>
+    <h1 class="navbar__brand"><a href="/">RES</a></h1>
     <ul class="navbar__links">
       <li><a href="#">Test</a></li>
       <li><a href="#">Test</a></li>
       <li><a href="#">Test</a></li>
     </ul>
+    <ul class="navbar__links">
+      <li>
+        <button
+          class="navbar__icon"
+          @click="toggleTheme"
+          aria-label="Toggle themes"
+        >
+          <dark-mode />
+        </button>
+      </li>
+    </ul>
   </nav>
 </template>
 <script>
+import DarkMode from "vue-material-design-icons/Brightness6.vue";
 export default {
   name: "NavBar",
+  components: {
+    "dark-mode": DarkMode,
+  },
+  data() {
+    return {
+      theme: "",
+    };
+  },
+  mounted() {
+    let localTheme = localStorage.getItem("theme"); //gets stored theme value if any
+    document.documentElement.setAttribute("data-theme", localTheme); // updates the data-theme attribute
+  },
+  methods: {
+    toggleTheme: function () {
+      this.theme = this.theme == "darkMode" ? "" : "darkMode"; //toggles theme value
+      document.documentElement.setAttribute("data-theme", this.theme); // sets the data-theme attribute
+      localStorage.setItem("theme", this.theme); // stores theme value on local storage
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -27,24 +58,41 @@ export default {
   box-shadow: #00000030 0 0 10px;
   user-select: none;
   color: var(--on-bg);
-}
-.navbar__brand {
-  font-size: 2.2rem;
-}
-.navbar__links {
-  list-style: none;
-  font-size: 1.4rem;
-  margin: 0.5%;
 
-  li {
-    display: inline-block;
-    padding: 22px 30px;
-
-    a:link,
-    a:visited {
+  &__brand {
+    font-size: 2.6rem;
+    margin: 0;
+    a:visited,
+    a:link {
       text-decoration: none;
       color: var(--on-bg);
     }
   }
+  &__links {
+    list-style: none;
+    font-size: 1.4rem;
+    margin: 0.5%;
+
+    li {
+      display: inline-block;
+      padding: 22px 30px;
+
+      a:link,
+      a:visited {
+        text-decoration: none;
+        color: var(--on-bg);
+      }
+    }
+  }
+  &__icon {
+    outline: none;
+    border: none;
+    background: none;
+    color: var(--on-bg);
+  }
+}
+
+#dark_mode {
+  display: none;
 }
 </style>

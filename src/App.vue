@@ -14,13 +14,18 @@ export default {
 };
 </script>
 <style lang="scss">
-body {
+:root {
   --bg: whitesmoke;
-  --bg2: white;
   --on-bg: #24252a;
-  --txt-color2: #6f6f6f;
-  --txt-color: #222328;
-
+}
+[data-theme="darkMode"] {
+  --bg: #24252a;
+  --on-bg: whitesmoke;
+}
+html {
+  background: var(--bg);
+}
+body {
   margin: 0;
   padding: 0;
 
@@ -40,12 +45,12 @@ body {
     #7f7fd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-@media (prefers-color-scheme: dark) {
-  body {
-    --bg: #24252a;
-    --on-bg: whitesmoke;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   body {
+//     --bg: #24252a;
+//     --on-bg: whitesmoke;
+//   }
+// }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
