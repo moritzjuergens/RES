@@ -2,7 +2,7 @@
   <div class="home">
     <div class="landingpage">
       <h1>Welcome to RES</h1>
-      <h4>The Resumé Evaluation System</h4>
+      <p>The Resumé Evaluation System</p>
     </div>
     <container>
       <h1>test</h1>

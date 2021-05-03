@@ -48,12 +48,13 @@ export default {
 .navbar {
   position: sticky;
   top: 0;
+  z-index: 1;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 5% 0 5%;
+  padding: 0 2% 0 5%;
   background: var(--bg);
   box-shadow: #00000030 0 0 10px;
   user-select: none;
@@ -89,6 +90,7 @@ export default {
     border: none;
     background: none;
     color: var(--on-bg);
+    cursor: pointer;
   }
 }
 

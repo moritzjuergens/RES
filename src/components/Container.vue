@@ -18,6 +18,7 @@ export default {
 
   background: var(--bg);
   color: var(--on-bg);
+  box-shadow: rgba(68, 68, 68, 0.274) 0 0 20px;
 
   display: flex;
   align-items: center;

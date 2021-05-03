@@ -18,13 +18,14 @@ export default {
 </script>
 <style lang="scss">
 :root {
-  --bg: whitesmoke;
+  --bg: #f5f5f5;
   --on-bg: #24252a;
 }
 [data-theme="darkMode"] {
   --bg: #24252a;
   --on-bg: whitesmoke;
 }
+/*TODO: OS defined dark mode*/
 html {
   background: var(--bg);
 }
