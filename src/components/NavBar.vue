@@ -42,7 +42,7 @@ export default {
       localStorage.setItem("theme", this.theme); // stores theme value on local storage
     },
     goToResume: function () {
-      window.scroll(0, 600);
+      window.scroll(0, 680);
     },
   },
 };
