@@ -2,8 +2,8 @@
   <nav class="navbar">
     <h1 class="navbar__brand"><router-link to="/">RES</router-link></h1>
     <ul class="navbar__links">
-      <li @click="goToResume"><router-link to="/">App</router-link></li>
-      <li><router-link to="/">Test</router-link></li>
+      <li @click="goToResume"><router-link to="/">Get started</router-link></li>
+      <li><router-link to="/">Documentation</router-link></li>
       <li><router-link to="/about">About</router-link></li>
     </ul>
     <ul class="navbar__links">

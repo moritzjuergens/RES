@@ -3,6 +3,7 @@
     <div class="landingpage">
       <h1>Welcome to RES</h1>
       <p>The Resumé Evaluation System</p>
+      <button class="action-button"><p>Get started here!</p></button>
     </div>
     <div class="content">
       <h4>Add your Resumé!</h4>
@@ -11,7 +12,8 @@
       </div>
     </div>
     <div class="landingpage">
-      <h3>Get your Resumé Score now!</h3>
+      <h3>Resumé Score:</h3>
+      <p>73%</p>
     </div>
   </div>
 </template>
@@ -26,6 +28,13 @@ export default {
 .home {
   font-size: 3.5rem;
   color: whitesmoke;
+  p {
+    font-size: 2rem;
+    margin: 1%;
+  }
+  h1 {
+    margin: 1%;
+  }
 }
 .landingpage {
   height: 90vh;
@@ -50,19 +59,64 @@ export default {
   }
 }
 .file-upload {
+  color: var(--on-bg);
   width: 60%;
   height: 20vh;
   padding: 50px;
-  background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
   border-radius: 12px;
   border: var(--on-bg) 2px solid;
+  background: rgb(110, 185, 255);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 1s ease-in-out;
+  transition: 0.3s ease-in-out;
   p {
     font-size: 1.2rem;
+  }
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+.action-button {
+  height: 75px;
+  width: fit-content;
+  background: var(--bg);
+  border-radius: 50px;
+  border: none;
+  margin: 5%;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  color: var(--on-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  p {
+    font-size: 2rem;
+    background: linear-gradient(67deg, #0897ea 0%, #59ff18 100%);
+    background-size: 300%;
+    background-position: left;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    transition: all 0.2s ease;
+  }
+  &:hover {
+    transform: scale(1.05);
+    p {
+      background-position: right;
+    }
+  }
+  &:focus {
+    outline: none;
+    transform: scale(1.05);
+    p {
+      background-position: right;
+    }
   }
 }
 </style>

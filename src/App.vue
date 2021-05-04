@@ -35,8 +35,8 @@ body {
 
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: #8ec5fc;
-  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  background-color: #08aeea;
+  background-image: linear-gradient(0deg, #08aeea 0%, #2af598 100%);
 }
 // }
 // @media (prefers-color-scheme: dark) {
