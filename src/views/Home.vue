@@ -1,19 +1,9 @@
 <template>
-  <div class="home">
-    <div class="landingpage">
-      <h1>Welcome to RES</h1>
-      <p>The Resumé Evaluation System</p>
+  <div class="home page">
+    <div class="content-bg-0">
+      <h1 class="page__header">Welcome to RES</h1>
+      <p class="page__sub">The Resumé Evaluation System</p>
       <button class="action-button"><p>Get started here!</p></button>
-    </div>
-    <div class="content">
-      <h4>Add your Resumé!</h4>
-      <div class="file-upload">
-        <p>Click the plus button or drag your file here</p>
-      </div>
-    </div>
-    <div class="landingpage">
-      <h3>Resumé Score:</h3>
-      <p>73%</p>
     </div>
   </div>
 </template>
@@ -25,39 +15,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.home {
-  font-size: 3.5rem;
-  color: whitesmoke;
-  p {
-    font-size: 2rem;
-    margin: 1%;
-  }
-  h1 {
-    margin: 1%;
-  }
-}
-.landingpage {
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.content {
-  max-width: 100%;
-  min-height: 60vh;
-  height: fit-content;
-  padding: 50px;
-  background-color: var(--bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h4 {
-    margin: 0 0 50px 0;
-    color: var(--on-bg);
-  }
-}
 .file-upload {
   color: var(--on-bg);
   width: 60%;

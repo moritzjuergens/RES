@@ -2,7 +2,9 @@
   <nav class="navbar">
     <h1 class="navbar__brand"><router-link to="/">RES</router-link></h1>
     <ul class="navbar__links">
-      <li @click="goToResume"><router-link to="/">Get started</router-link></li>
+      <li>
+        <router-link to="/get-started">Get started</router-link>
+      </li>
       <li><router-link to="/">Documentation</router-link></li>
       <li><router-link to="/about">About</router-link></li>
     </ul>
@@ -40,9 +42,7 @@ export default {
       this.theme = this.theme == "darkMode" ? "" : "darkMode"; //toggles theme value
       document.documentElement.setAttribute("data-theme", this.theme); // sets the data-theme attribute
       localStorage.setItem("theme", this.theme); // stores theme value on local storage
-    },
-    goToResume: function () {
-      window.scroll(0, 680);
+      document.getElementById("flask").classList.toggle("invert");
     },
   },
 };
@@ -51,7 +51,7 @@ export default {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 
   display: flex;
   align-items: center;
