@@ -18,11 +18,15 @@ export default {
 </script>
 <style lang="scss">
 :root {
-  --bg: #f5f5f5;
-  --on-bg: #24252a;
+  --bg: #583c72;
+  --body: #ecdcca;
+  --on-bg: whitesmoke;
+  --on-body: #2b2e4a;
 }
 [data-theme="darkMode"] {
-  --bg: #24252a;
+  --bg: #2b2e4a;
+  --body: #9f5f80;
+  --on-body: whitesmoke;
   --on-bg: whitesmoke;
 }
 /*TODO: OS defined dark mode*/
@@ -32,11 +36,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: #08aeea;
-  background-image: linear-gradient(0deg, #08aeea 0%, #2af598 100%);
+  background-color: var(--body);
 }
 // }
 // @media (prefers-color-scheme: dark) {
@@ -50,17 +50,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--txt-color);
+  color: var(--on-bg);
 }
 .page {
-  color: whitesmoke;
   &__header {
     margin: 1%;
-    font-size: 6.5rem;
+    font-size: 5.5rem;
+    color: var(--on-body);
   }
   &__sub {
     margin: 1%;
     font-size: 2rem;
+    color: var(--on-body);
   }
 }
 .content,
@@ -84,7 +85,7 @@ body {
   }
 }
 .content-bg-0 {
-  padding: 10%;
+  padding: 7%;
   &__header {
     font-size: 2.5rem;
   }

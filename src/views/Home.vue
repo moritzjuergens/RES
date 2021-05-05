@@ -1,10 +1,20 @@
 <template>
-  <div class="home page">
-    <div class="content-bg-0">
-      <h1 class="page__header">Welcome to RES</h1>
-      <p class="page__sub">The Resumé Evaluation System</p>
-      <button class="action-button"><p>Get started here!</p></button>
+  <div class="home">
+    <div class="content-bg-0" style="padding-right: 20px">
+      <div class="landing-page">
+        <div class="text">
+          <h1 class="page__header">Welcome to RES</h1>
+          <p class="page__sub">The Resumé Evaluation System</p>
+          <button class="action-button"><p>Get started here!</p></button>
+        </div>
+        <img
+          :src="require('/src/assets/vector-creator.png')"
+          alt="Woman on PC"
+          class="img"
+        />
+      </div>
     </div>
+    <div class="content-bg-1--ng" id="first"></div>
   </div>
 </template>
 
@@ -41,7 +51,8 @@ export default {
   border-radius: 50px;
   border: none;
   margin: 5%;
-  padding: 2%;
+  padding: 25px;
+  margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,28 +63,44 @@ export default {
   cursor: pointer;
   transition: transform 0.2s ease;
   p {
-    font-size: 2rem;
-    background: linear-gradient(67deg, #0897ea 0%, #59ff18 100%);
-    background-size: 300%;
-    background-position: left;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
     margin: 0;
     transition: all 0.2s ease;
   }
   &:hover {
     transform: scale(1.05);
-    p {
-      background-position: right;
-    }
   }
   &:focus {
     outline: none;
     transform: scale(1.05);
-    p {
-      background-position: right;
-    }
+  }
+}
+.text {
+  height: 100%;
+  width: 60%;
+  text-align: left;
+  h1 {
+    font-size: 5.5rem;
+  }
+}
+.img {
+  padding-top: 40px;
+}
+.landing-page {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#first {
+  &:before,
+  &:after {
+    transform-origin: left top;
+    transform: skewY(5deg);
+  }
+  &:after {
+    transform-origin: right bottom;
+    transform: skewY(5deg);
   }
 }
 </style>
