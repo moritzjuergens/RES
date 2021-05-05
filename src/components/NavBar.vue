@@ -42,7 +42,7 @@ export default {
       this.theme = this.theme == "darkMode" ? "" : "darkMode"; //toggles theme value
       document.documentElement.setAttribute("data-theme", this.theme); // sets the data-theme attribute
       localStorage.setItem("theme", this.theme); // stores theme value on local storage
-      document.getElementById("flask").classList.toggle("invert");
+      // document.getElementById("flask").classList.toggle("invert");
     },
   },
 };

@@ -10,11 +10,61 @@
         <img
           :src="require('/src/assets/vector-creator.png')"
           alt="Woman on PC"
-          class="img"
+          id="img"
         />
       </div>
     </div>
-    <div class="content-bg-1--ng" id="first"></div>
+    <div class="content-bg-1--ng" id="first">
+      <div class="container">
+        <div class="container__item">
+          <h5 class="container__item__header">Rate your candidates</h5>
+          <p class="container__item__body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
+            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
+            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
+            illum quo!
+          </p>
+        </div>
+        <div class="container__item">
+          <h5 class="container__item__header">Check your Resumé</h5>
+          <p class="container__item__body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
+            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
+            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
+            illum quo!
+          </p>
+        </div>
+        <div class="container__item">
+          <h5 class="container__item__header">All in one place</h5>
+          <p class="container__item__body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
+            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
+            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
+            illum quo!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-bg-0" id="second">
+      <div class="left">
+        <h1 class="page__header" style="font-size: 3rem">
+          Using the latest NLP Technologies
+        </h1>
+      </div>
+      <div class="landing-page">
+        <img
+          :src="require('/src/assets/vector-creator (3).png')"
+          alt="Woman on PC"
+          id="img2"
+        />
+        <p class="test">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique
+          magnam beatae in hic facere dolores fuga rerum provident,
+          reprehenderit alias consectetur culpa nesciunt. Eius quo maiores
+          tenetur explicabo provident velit?
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -83,7 +133,7 @@ export default {
     font-size: 5.5rem;
   }
 }
-.img {
+#img {
   padding-top: 40px;
 }
 .landing-page {
@@ -102,5 +152,50 @@ export default {
     transform-origin: right bottom;
     transform: skewY(5deg);
   }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 50px;
+
+  &__item {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+
+    box-shadow: 0 0 5px rgba($color: #1d1d1d, $alpha: 0.2);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+
+    &__header {
+      font-size: 1.5rem;
+      margin: 0px 0 20px 0px;
+    }
+    &:hover {
+      box-shadow: 0 0 10px rgba($color: #1d1d1d, $alpha: 0.2);
+      transform: scale(1.05);
+    }
+  }
+}
+.left {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 100px;
+}
+#img2 {
+  width: 700px;
+}
+#second {
+  padding-left: 50px;
+}
+.test {
+  font-size: 1.5rem;
+  color: var(--on-body);
+  width: 40ch;
 }
 </style>
