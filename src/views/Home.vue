@@ -98,7 +98,7 @@ export default {
   height: 75px;
   width: fit-content;
   background: var(--bg);
-  border-radius: 50px;
+  border-radius: 10px;
   border: none;
   margin: 5%;
   padding: 25px;
