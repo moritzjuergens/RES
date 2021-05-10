@@ -18,10 +18,11 @@ export default {
 </script>
 <style lang="scss">
 :root {
-  --bg: #583c72;
-  --body: #ecdcca;
+  --bg: #9f5f80;
+  --body: #f8e7d4;
   --on-bg: whitesmoke;
   --on-body: #2b2e4a;
+  --header: 0rem;
 }
 [data-theme="darkMode"] {
   --bg: #2b2e4a;
@@ -55,12 +56,12 @@ body {
 .page {
   &__header {
     margin: 1%;
-    font-size: 5.5rem;
+    font-size: var(--header);
     color: var(--on-body);
   }
   &__sub {
     margin: 1%;
-    font-size: 2rem;
+    font-size: var(--sub);
     color: var(--on-body);
   }
 }
@@ -85,7 +86,7 @@ body {
   }
 }
 .content-bg-0 {
-  padding: 7%;
+  padding: 5%;
   &__header {
     font-size: 2.5rem;
   }
@@ -122,6 +123,43 @@ body {
   &:after {
     transform-origin: right bottom;
     transform: skewY(-3deg);
+  }
+}
+
+/* =================
+     Media-Queries
+===================== */
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  :root {
+    --header: 5.5rem;
+    --sub: 3rem;
+    --p: 1.5rem;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  :root {
+    --header: 5rem;
+    --sub: 2.5rem;
+    --p: 1.5rem;
+  }
+}
+@media (min-width: 2500px) {
+  :root {
+    --header: 8rem;
+    --sub: 4rem;
+    --p: 2.5rem;
   }
 }
 </style>

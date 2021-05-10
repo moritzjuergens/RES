@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <div class="content-bg-0" style="padding-right: 20px">
-      <div class="landing-page">
-        <div class="text">
-          <h1 class="page__header">Welcome to RES</h1>
-          <p class="page__sub">The Resumé Evaluation System</p>
-          <button class="action-button"><p>Get started here!</p></button>
+    <div class="content-bg-0">
+      <div class="flex">
+        <div class="landing-page">
+          <div class="text">
+            <h1 class="page__header">Welcome to RES</h1>
+            <p class="page__sub">The Resumé Evaluation System</p>
+            <button class="action-button"><p>Get started here!</p></button>
+          </div>
+          <img
+            :src="require('/src/assets/vector-creator.png')"
+            alt="Woman on PC"
+            id="img"
+          />
         </div>
-        <img
-          :src="require('/src/assets/vector-creator.png')"
-          alt="Woman on PC"
-          id="img"
-        />
       </div>
     </div>
     <div class="content-bg-1--ng" id="first">
@@ -47,22 +49,22 @@
     </div>
     <div class="content-bg-0" id="second">
       <div class="left">
-        <h1 class="page__header" style="font-size: 3rem">
-          Using the latest NLP Technologies
-        </h1>
+        <h1 class="page__sub">Using the latest NLP Technologies</h1>
       </div>
-      <div class="landing-page">
-        <img
-          :src="require('/src/assets/vector-creator (3).png')"
-          alt="Woman on PC"
-          id="img2"
-        />
-        <p class="test">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique
-          magnam beatae in hic facere dolores fuga rerum provident,
-          reprehenderit alias consectetur culpa nesciunt. Eius quo maiores
-          tenetur explicabo provident velit?
-        </p>
+      <div class="flex">
+        <div class="landing-page">
+          <img
+            :src="require('/src/assets/vector-creator (3).png')"
+            alt="Woman on PC"
+            id="img2"
+          />
+          <p class="test">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique
+            magnam beatae in hic facere dolores fuga rerum provident,
+            reprehenderit alias consectetur culpa nesciunt. Eius quo maiores
+            tenetur explicabo provident velit?
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -127,19 +129,29 @@ export default {
 }
 .text {
   height: 100%;
-  width: 60%;
+  width: 100%;
   text-align: left;
-  h1 {
-    font-size: 5.5rem;
-  }
+  // h1 {
+  //   font-size: 7rem;
+  // }
 }
 #img {
   padding-top: 40px;
+  width: 100%;
+  height: auto;
 }
 .landing-page {
   width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+  align-items: center;
+}
+.flex {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 
 #first {
@@ -190,11 +202,8 @@ export default {
 #img2 {
   width: 700px;
 }
-#second {
-  padding-left: 50px;
-}
 .test {
-  font-size: 1.5rem;
+  font-size: var(--p);
   color: var(--on-body);
   width: 40ch;
 }
