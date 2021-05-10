@@ -18,17 +18,17 @@ export default {
 </script>
 <style lang="scss">
 :root {
-  --bg: #9f5f80;
-  --body: #f8e7d4;
+  --bg: #3082ff;
+  --body: white;
   --on-bg: whitesmoke;
   --on-body: #2b2e4a;
   --header: 0rem;
 }
 [data-theme="darkMode"] {
-  --bg: #2b2e4a;
-  --body: #9f5f80;
+  --bg: whitesmoke;
+  --body: #3082ff;
   --on-body: whitesmoke;
-  --on-bg: whitesmoke;
+  --on-bg: #2b2e4a;
 }
 /*TODO: OS defined dark mode*/
 html {
@@ -88,7 +88,8 @@ body {
 .content-bg-0 {
   padding: 5%;
   &__header {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    color: var(--on-body);
   }
 }
 .content-bg-1 {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="content-bg-0">
+    <div class="content-bg-0" style="height: 70vh">
       <div class="flex">
         <div class="landing-page">
           <div class="text">
@@ -8,11 +8,11 @@
             <p class="page__sub">The Resumé Evaluation System</p>
             <button class="action-button"><p>Get started here!</p></button>
           </div>
-          <img
+          <!-- <img
             :src="require('/src/assets/vector-creator.png')"
             alt="Woman on PC"
             id="img"
-          />
+          /> -->
         </div>
       </div>
     </div>
