@@ -21,14 +21,16 @@ export default {
   --bg: #3082ff;
   --body: white;
   --on-bg: whitesmoke;
-  --on-body: #2b2e4a;
+  --on-body: #2b2d4a;
+  --bg2: white;
   --header: 0rem;
 }
 [data-theme="darkMode"] {
-  --bg: whitesmoke;
-  --body: #3082ff;
+  --bg: #2b2e4a;
+  --body: #363864;
+  --bg2: #2b2d4a;
   --on-body: whitesmoke;
-  --on-bg: #2b2e4a;
+  --on-bg: whitesmoke;
 }
 /*TODO: OS defined dark mode*/
 html {
