@@ -6,7 +6,9 @@
           <div class="text">
             <h1 class="page__header">Welcome to RES</h1>
             <p class="page__sub">The Resumé Evaluation System</p>
-            <button class="action-button"><p>Get started here!</p></button>
+            <router-link class="action-button" to="/get-started">
+              <p>Get started here!</p>
+            </router-link>
           </div>
           <!-- <img
             :src="require('/src/assets/vector-creator.png')"
@@ -97,20 +99,21 @@ export default {
   }
 }
 .action-button {
+  text-decoration: none;
   height: 75px;
   width: fit-content;
-  background: var(--bg);
+  background: #3082ff;
   border-radius: 10px;
   border: none;
   margin: 5%;
-  padding: 25px;
+  padding: 10px 25px;
   margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   font-size: 1.5rem;
-  color: var(--on-bg);
+  color: white;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;

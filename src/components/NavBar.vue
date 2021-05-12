@@ -95,9 +95,28 @@ export default {
     color: white;
     cursor: pointer;
   }
+  &__icon:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+  }
 }
 
 #dark_mode {
   display: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(15deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
 }
 </style>
