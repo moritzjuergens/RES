@@ -3,10 +3,21 @@
     <div class="content-bg-0" style="padding-top: 3%">
       <div class="container">
         <form @submit.prevent="onSubmit" class="form" id="regForm">
-          <h1 class="form__header">Getting started</h1>
-          <h4 class="form__sub">
-            Fill out the information and calculate your compatibility score
-          </h4>
+          <div class="form__grid form__head">
+            <div>
+              <h1 class="form__header">Getting started</h1>
+              <h4 class="form__sub">
+                Fill out the information and calculate your compatibility score
+              </h4>
+            </div>
+            <button
+              class="form__button prev"
+              id="prevBtn"
+              @click="nextPrev(-1)"
+            >
+              Back
+            </button>
+          </div>
           <div class="form__grid">
             <div class="form__grid__item" id="right-border">
               <div class="tab-nav">
@@ -133,6 +144,12 @@ export default {
       // This function will display the specified tab of the form ...
       this.tabs[n].style.display = "block";
 
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+
       if (n == this.tabs.length - 1) {
         document.getElementById("nextBtn").innerHTML = "Submit";
       } else {
@@ -253,7 +270,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 40px 0 40px 40px;
+      padding: 40px 0 20px 40px;
     }
   }
   &__button {
@@ -285,6 +302,22 @@ export default {
   &__label {
     color: rgb(151, 151, 151);
   }
+  &__head {
+    max-height: 100px;
+    border: none;
+    grid-template-columns: 94% 6%;
+  }
+}
+
+.prev {
+  background: red;
+  width: 50px;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.prev:hover {
+  box-shadow: rgba(255, 0, 0, 0.507) 0 0 10px;
 }
 
 .tab {
