@@ -53,6 +53,42 @@ def all_books():
         'books': BOOKS
     })
 
+
+PRE = [
+    {
+        'title': 'Full-Stack-Developer',
+        'config': 'Jack Kerouac',
+        'read': True
+    },
+    {
+        'title': 'Manager',
+        'config': 'Jack Kerouac',
+        'read': True
+    },
+    {
+        'title': 'Scrum Master',
+        'config': 'Jack Kerouac',
+        'read': True
+    },
+]
+
+
+@app.route('/pre', methods=['GET', 'POST'])
+def presets():
+    response_object = {'status': 'success'}
+    if request.method == 'POST':
+        post_data = request.get_json()
+        PRE.append({
+            'title': post_data.get('title'),
+            'config': post_data.get('config'),
+            'read': post_data.get('read')
+        })
+        response_object['message'] = 'Book added!'
+    else:
+        response_object['pre'] = PRE
+    return jsonify(response_object)
+
+
 # @app.route('/success', methods=['POST'])
 # def success():
 #     if request.method == 'POST':

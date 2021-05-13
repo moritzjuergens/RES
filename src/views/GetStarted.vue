@@ -2,7 +2,7 @@
   <div class="page">
     <div class="content-bg-0" style="padding-top: 3%">
       <div class="container">
-        <form action="" class="form">
+        <form @submit.prevent="onSubmit" class="form" id="regForm">
           <h1 class="form__header">Getting started</h1>
           <h4 class="form__sub">
             Fill out the information and calculate your compatibility score
@@ -43,10 +43,20 @@
                     >Select a pre-set</label
                   >
                   <input
-                    type="text"
+                    id="preset-input"
+                    list="preset-list"
                     class="form__input"
                     placeholder="eg. Full-Stack-Developer"
+                    v-model="formData.preset"
                   />
+                  <datalist id="preset-list">
+                    <option
+                      v-for="(preset, index) in presets"
+                      :key="index"
+                      :value="preset.title"
+                    ></option>
+                  </datalist>
+
                   <label for="link" class="form__label"
                     >Link the job posting</label
                   >
@@ -65,7 +75,7 @@
                   by our algorithm
                 </h4>
                 <div class="input-container" style="justify-content: center">
-                  <label lass="form__label" for="drag"
+                  <label class="form__label" for="drag"
                     >Upload your Resumé</label
                   >
                   <div
@@ -96,48 +106,58 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   name: "GetStarted",
   data() {
     return {
       currentTab: 0,
+      presets: [],
+      tabs: document.getElementsByClassName("tab"),
+      formData: {
+        preset: "",
+        config: "",
+        read: [],
+      },
     };
   },
   mounted() {
     this.showTab(this.currentTab);
   },
+  created() {
+    this.getSets();
+  },
   methods: {
-    showTab: function (n) {
+    showTab(n) {
       // This function will display the specified tab of the form ...
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
+      this.tabs[n].style.display = "block";
 
-      if (n == x.length - 1) {
+      if (n == this.tabs.length - 1) {
         document.getElementById("nextBtn").innerHTML = "Submit";
       } else {
         document.getElementById("nextBtn").innerHTML = "Next step";
       }
       this.fixStepIndicator(n);
     },
-    nextPrev: function (n) {
+    nextPrev(n) {
       // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
       // Exit the function if any field in the current tab is invalid:
       // if (n == 1 && !validateForm()) return false;
       // Hide the current tab:
-      x[this.currentTab].style.display = "none";
+      this.tabs[this.currentTab].style.display = "none";
       // Increase or decrease the current tab by 1:
       this.currentTab = this.currentTab + n;
       // if you have reached the end of the form... :
-      if (this.currentTab >= x.length) {
+      if (this.currentTab >= this.tabs.length) {
         //...the form gets submitted:
-        document.getElementById("regForm").submit();
+        document.getElementById("nextBtn").type = "submit";
         return false;
       }
       // Otherwise, display the correct tab:
       this.showTab(this.currentTab);
     },
-    fixStepIndicator: function (n) {
+    fixStepIndicator(n) {
       // This function removes the "active" class of all steps...
       var x = document.getElementsByClassName("tab-nav__item"); //i
       // for (i = 0; i < x.length; i++) {
@@ -145,6 +165,48 @@ export default {
       // }
       //... and adds the "active" class to the current step:
       x[n].className += " active";
+    },
+    getSets() {
+      const path = "http://localhost:5000/pre";
+      axios
+        .get(path)
+        .then((res) => {
+          this.presets = res.data.pre;
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
+    onSubmit(evt) {
+      evt.preventDefault();
+      let read = false;
+      if (this.formData.read[0]) read = true;
+      const payload = {
+        title: this.formData.preset,
+        config: "",
+        read,
+      };
+      this.addData(payload);
+      this.initForm();
+    },
+    initForm() {
+      this.formData.preset = "";
+      this.formData.config = "";
+      this.formData.read = [];
+    },
+    addData(payload) {
+      const path = "http://localhost:5000/pre";
+      axios
+        .post(path, payload)
+        .then(() => {
+          this.getSets();
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.log(error);
+          this.getSets();
+        });
     },
   },
 };
@@ -156,7 +218,7 @@ export default {
   background: var(--bg2);
   border: 1px solid #3082ff;
   border-radius: 5px;
-  box-shadow: rgba(128, 128, 128, 0.281) 3px 5px 10px;
+  box-shadow: #3083ff77 3px 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,7 +327,7 @@ export default {
   transition: all 0.2s;
 }
 .active:hover {
-  transform: scale(1.01);
+  transform: scale(1.03);
   box-shadow: 0px 0px 20px #3083ff62;
 }
 #right-border {

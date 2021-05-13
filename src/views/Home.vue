@@ -10,11 +10,13 @@
               <p>Get started here!</p>
             </router-link>
           </div>
-          <!-- <img
-            :src="require('/src/assets/vector-creator.png')"
-            alt="Woman on PC"
-            id="img"
-          /> -->
+          <div class="img-container">
+            <img
+              :src="require('/src/assets/undraw_Updated_resume_re_q1or.svg')"
+              alt="Woman on PC"
+              id="img"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -56,7 +58,7 @@
       <div class="flex">
         <div class="landing-page">
           <img
-            :src="require('/src/assets/vector-creator (3).png')"
+            :src="require('/src/assets/undraw_file_analysis_8k9b.svg')"
             alt="Woman on PC"
             id="img2"
           />
@@ -100,10 +102,10 @@ export default {
 }
 .action-button {
   text-decoration: none;
-  height: 75px;
+  height: 50px;
   width: fit-content;
   background: #3082ff;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   margin: 5%;
   padding: 10px 25px;
@@ -134,9 +136,6 @@ export default {
   height: 100%;
   width: 100%;
   text-align: left;
-  // h1 {
-  //   font-size: 7rem;
-  // }
 }
 #img {
   padding-top: 40px;
@@ -146,9 +145,8 @@ export default {
 .landing-page {
   width: 100%;
   display: grid;
-  grid-template-columns: 50% 50%;
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: 60% 40%;
+  margin: 15px;
 }
 .flex {
   display: flex;
@@ -203,11 +201,19 @@ export default {
   margin-bottom: 100px;
 }
 #img2 {
-  width: 700px;
+  width: 60%;
 }
 .test {
   font-size: var(--p);
   color: var(--on-body);
   width: 40ch;
+}
+
+.img-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 </style>
