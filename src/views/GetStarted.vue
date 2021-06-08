@@ -57,7 +57,6 @@
                     id="preset-input"
                     list="preset-list"
                     class="form__input"
-                    placeholder="eg. Full-Stack-Developer"
                     v-model="formData.preset"
                   />
                   <datalist id="preset-list">
@@ -71,11 +70,7 @@
                   <label for="link" class="form__label"
                     >Link the job posting</label
                   >
-                  <input
-                    type="text"
-                    class="form__input"
-                    placeholder="eg. https://company.com/hire"
-                  />
+                  <input type="text" class="form__input" />
                 </div>
               </div>
               <!-- Upload your Resumé -->
@@ -86,16 +81,59 @@
                   by our algorithm
                 </h4>
                 <div class="input-container" style="justify-content: center">
-                  <label class="form__label" for="drag"
-                    >Upload your Resumé</label
+                  <input
+                    class="box__file"
+                    type="file"
+                    name="files"
+                    id="files"
+                  />
+                  <label for="files">
+                    <upload-ico /> <br />
+                    <strong>Choose a file</strong
+                    ><span> or drag it here</span>.</label
                   >
-                  <div
-                    class="txt-area"
-                    name="drag"
-                    id="drag"
-                    cols="30"
-                    rows="10"
-                  ></div>
+                  <button class="box__button" @click="uploadFile">
+                    Upload
+                  </button>
+                  <!-- <div
+                    class="box-input"
+                    id="file"
+                    v-cloak
+                    @drop.prevent="addFile"
+                    @dragover.prevent
+                  >
+                    <div v-if="files.length == 0">
+                      <input
+                        class="box__file"
+                        type="file"
+                        name="files"
+                        id="files"
+                      />
+                      <label for="files">
+                        <upload-ico /> <br />
+                        <strong>Choose a file</strong
+                        ><span> or drag it here</span>.</label
+                      >
+                      <button class="box__button" @click="uploadFile">
+                        Upload
+                      </button>
+                    </div>
+                    <div v-else>
+                      <label
+                        for="file"
+                        v-for="(file, index) in files"
+                        :key="index"
+                        >{{ file.name }}</label
+                      >
+                      <br />
+                      <button class="box__button" @click="uploadFile">
+                        Upload
+                      </button>
+                    </div>
+                  </div>
+                  <div class="box__uploading">Uploading…</div>
+                  <div class="box__success">Done!</div>
+                  <div class="box__error">Error! <span></span>.</div> -->
                 </div>
               </div>
               <!-- submit -->
@@ -105,6 +143,9 @@
                   Fill out the information and calculate your compatibility
                   score
                 </h4>
+                <p v-for="(file, index) in files" :key="index">
+                  {{ file.name }}
+                </p>
               </div>
               <button class="form__button" id="nextBtn" @click="nextPrev(1)">
                 Next step
@@ -117,15 +158,20 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+// import axios from "axios";
+import Upload from "vue-material-design-icons/FileUpload.vue";
 
 export default {
   name: "GetStarted",
+  components: {
+    "upload-ico": Upload,
+  },
   data() {
     return {
       currentTab: 0,
       presets: [],
       tabs: document.getElementsByClassName("tab"),
+      files: [],
       formData: {
         preset: "",
         config: "",
@@ -158,20 +204,12 @@ export default {
       this.fixStepIndicator(n);
     },
     nextPrev(n) {
-      // This function will figure out which tab to display
-      // Exit the function if any field in the current tab is invalid:
-      // if (n == 1 && !validateForm()) return false;
-      // Hide the current tab:
       this.tabs[this.currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
       this.currentTab = this.currentTab + n;
-      // if you have reached the end of the form... :
       if (this.currentTab >= this.tabs.length) {
-        //...the form gets submitted:
         document.getElementById("nextBtn").type = "submit";
         return false;
       }
-      // Otherwise, display the correct tab:
       this.showTab(this.currentTab);
     },
     fixStepIndicator(n) {
@@ -183,47 +221,77 @@ export default {
       //... and adds the "active" class to the current step:
       x[n].className += " active";
     },
-    getSets() {
-      const path = "http://localhost:5000/pre";
-      axios
-        .get(path)
-        .then((res) => {
-          this.presets = res.data.pre;
-        })
-        .catch((error) => {
-          // eslint-disable-next-line
-          console.error(error);
-        });
+
+    comments() {
+      // getSets() {
+      //   const path = "http://localhost:5000/pre";
+      //   axios
+      //     .get(path)
+      //     .then((res) => {
+      //       this.presets = res.data.pre;
+      //     })
+      //     .catch((error) => {
+      //       // eslint-disable-next-line
+      //       console.error(error);
+      //     });
+      // },
+      // initForm() {
+      //   (this.files = []), (this.formData.preset = "");
+      //   this.formData.config = "";
+      //   this.formData.read = [];
+      // },
+      // addData(payload) {
+      //   const path = "http://localhost:5000/pre";
+      //   axios
+      //     .post(path, payload)
+      //     .then(() => {
+      //       this.getSets();
+      //     })
+      //     .catch((error) => {
+      //       // eslint-disable-next-line
+      //       console.log(error);
+      //       this.getSets();
+      //     });
+      // },
     },
+
     onSubmit(evt) {
       evt.preventDefault();
-      let read = false;
-      if (this.formData.read[0]) read = true;
-      const payload = {
-        title: this.formData.preset,
-        config: "",
-        read,
-      };
-      this.addData(payload);
-      this.initForm();
+      // let read = false;
+      // if (this.formData.read[0]) read = true;
+      // const payload = {
+      //   title: this.formData.preset,
+      //   config: "",
+      //   read,
+      // };
+      // this.addData(payload);
+      // this.initForm();
     },
-    initForm() {
-      this.formData.preset = "";
-      this.formData.config = "";
-      this.formData.read = [];
+
+    uploadFile(e) {
+      var formElement = document.querySelector("#regForm"),
+        // fileElement = document.querySelector("#files"),
+        request = new XMLHttpRequest(),
+        data = new FormData(formElement);
+      // data = this.files;
+      // this.files.forEach((f, x) => {
+      //   data.append("file" + (x + 1), f);
+      // });
+
+      console.log(data);
+      request.open("POST", "http://localhost:5000/file", true);
+      request.send(data);
+
+      e.preventDefault();
+      e.stopPropagation();
     },
-    addData(payload) {
-      const path = "http://localhost:5000/pre";
-      axios
-        .post(path, payload)
-        .then(() => {
-          this.getSets();
-        })
-        .catch((error) => {
-          // eslint-disable-next-line
-          console.log(error);
-          this.getSets();
-        });
+    addFile(e) {
+      let droppedFiles = e.dataTransfer.files;
+      if (!droppedFiles) return;
+      // this tip, convert FileList to array, credit: https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
+      [...droppedFiles].forEach((f) => {
+        this.files.push(f);
+      });
     },
   },
 };
@@ -300,7 +368,9 @@ export default {
     color: var(--on-body);
   }
   &__label {
-    color: rgb(151, 151, 151);
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
   }
   &__head {
     max-height: 100px;
@@ -368,13 +438,42 @@ export default {
   padding: 40px 0;
 }
 
-.txt-area {
+.box-input {
   width: 400px;
-  height: 100px;
+  height: 150px;
   background: var(--body);
   color: var(--on-body);
   border: 1px solid #3082ff;
   border-radius: 5px;
-  margin-top: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.box__file {
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  overflow: hidden;
+}
+.box__file + label > strong {
+  cursor: pointer;
+}
+.box__file:hover + label > strong:hover {
+  color: #a9ccff;
+}
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+.box.is-dragover {
+  background-color: grey;
 }
 </style>
