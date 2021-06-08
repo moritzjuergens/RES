@@ -82,7 +82,7 @@
                 </h4>
                 <div class="input-container" style="justify-content: center">
                   <input
-                    class="box__file"
+                    class="box__file-temp"
                     type="file"
                     name="files"
                     id="files"
