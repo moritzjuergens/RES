@@ -7,7 +7,7 @@
             <div>
               <h1 class="form__header">Getting started</h1>
               <h4 class="form__sub">
-                Fill out the information and calculate your compatibility score
+                Upload your Resume and find out which job fits you best!
               </h4>
             </div>
             <button
@@ -23,13 +23,13 @@
               <div class="tab-nav">
                 <div class="tab-nav__item">
                   <img
-                    :src="require('/src/assets/work_white_24dp.svg')"
+                    :src="require('/src/assets/upload_file_white_24dp.svg')"
                     alt=""
                   />
                 </div>
                 <div class="tab-nav__item">
                   <img
-                    :src="require('/src/assets/upload_file_white_24dp.svg')"
+                    :src="require('/src/assets/work_white_24dp.svg')"
                     alt=""
                   />
                 </div>
@@ -42,37 +42,6 @@
               </div>
             </div>
             <div class="form__grid__item">
-              <!-- Select your profession -->
-              <div class="tab">
-                <h1 class="form__header">Select your profession</h1>
-                <h4 class="form__sub">
-                  Either select one of our pre-sets or link the job posting and
-                  we'll figure it out from there!
-                </h4>
-                <div class="input-container">
-                  <label for="dropdown" class="form__label"
-                    >Select a pre-set</label
-                  >
-                  <input
-                    id="preset-input"
-                    list="preset-list"
-                    class="form__input"
-                    v-model="formData.preset"
-                  />
-                  <datalist id="preset-list">
-                    <option
-                      v-for="(preset, index) in presets"
-                      :key="index"
-                      :value="preset.title"
-                    ></option>
-                  </datalist>
-
-                  <label for="link" class="form__label"
-                    >Link the job posting</label
-                  >
-                  <input type="text" class="form__input" />
-                </div>
-              </div>
               <!-- Upload your Resumé -->
               <div class="tab">
                 <h1 class="form__header">Upload your Resumé</h1>
@@ -81,7 +50,7 @@
                   by our algorithm
                 </h4>
                 <div class="input-container" style="justify-content: center">
-                  <input
+                  <!-- <input
                     class="box__file-temp"
                     type="file"
                     name="files"
@@ -94,8 +63,8 @@
                   >
                   <button class="box__button" @click="uploadFile">
                     Upload
-                  </button>
-                  <!-- <div
+                  </button> -->
+                  <div
                     class="box-input"
                     id="file"
                     v-cloak
@@ -133,19 +102,49 @@
                   </div>
                   <div class="box__uploading">Uploading…</div>
                   <div class="box__success">Done!</div>
-                  <div class="box__error">Error! <span></span>.</div> -->
+                  <div class="box__error">Error! <span></span>.</div>
                 </div>
               </div>
-              <!-- submit -->
+              <!-- Get lists of Jobs -->
               <div class="tab">
-                <h1 class="form__header">Getting started3</h1>
+                <h1 class="form__header">Jobs for you!</h1>
                 <h4 class="form__sub">
-                  Fill out the information and calculate your compatibility
-                  score
+                  These are some of the jobs we think fit best to you!
                 </h4>
                 <p v-for="(file, index) in files" :key="index">
                   {{ file.name }}
                 </p>
+              </div>
+              <!-- Select your profession -->
+              <div class="tab">
+                <h1 class="form__header">Select your profession</h1>
+                <h4 class="form__sub">
+                  Either select one of our pre-sets or link the job posting and
+                  we'll figure it out from there!
+                </h4>
+                <div class="input-container">
+                  <label for="dropdown" class="form__label"
+                    >Select a pre-set</label
+                  >
+                  <input
+                    id="preset-input"
+                    list="preset-list"
+                    class="form__input"
+                    v-model="formData.preset"
+                  />
+                  <datalist id="preset-list">
+                    <option
+                      v-for="(preset, index) in presets"
+                      :key="index"
+                      :value="preset.title"
+                    ></option>
+                  </datalist>
+
+                  <label for="link" class="form__label"
+                    >Link the job posting</label
+                  >
+                  <input type="text" class="form__input" />
+                </div>
               </div>
               <button class="form__button" id="nextBtn" @click="nextPrev(1)">
                 Next step
@@ -270,13 +269,13 @@ export default {
 
     uploadFile(e) {
       var formElement = document.querySelector("#regForm"),
-        // fileElement = document.querySelector("#files"),
         request = new XMLHttpRequest(),
         data = new FormData(formElement);
-      // data = this.files;
-      // this.files.forEach((f, x) => {
-      //   data.append("file" + (x + 1), f);
-      // });
+
+      this.files.forEach((f, x) => {
+        console.log(f, "+", x);
+        data.append("file" + (x + 1), f);
+      });
 
       console.log(data);
       request.open("POST", "http://localhost:5000/file", true);
