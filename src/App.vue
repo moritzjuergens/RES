@@ -24,6 +24,7 @@ export default {
   --on-body: #2b2d4a;
   --bg2: white;
   --header: 0rem;
+  --highlight: rgb(212, 230, 248);
 }
 [data-theme="darkMode"] {
   --bg: #2b2e4a;
@@ -31,6 +32,7 @@ export default {
   --bg2: #2b2d4a;
   --on-body: whitesmoke;
   --on-bg: whitesmoke;
+  --highlight: #4f5064;
 }
 /*TODO: OS defined dark mode*/
 html {
@@ -92,6 +94,10 @@ body {
   &__header {
     font-size: 3rem;
     color: var(--on-body);
+    &--2 {
+      font-size: 1.5rem;
+      color: var(--on-body);
+    }
   }
 }
 .content-bg-1 {

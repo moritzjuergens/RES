@@ -43,7 +43,7 @@
             </div>
             <div class="form__grid__item">
               <!-- Upload your Resumé -->
-              <div class="tab">
+              <div class="tab" id="Upload Resume">
                 <h1 class="form__header">Upload your Resumé</h1>
                 <h4 class="form__sub">
                   Upload your Resumé as a PDF file to get in analyzed and rated
@@ -106,16 +106,39 @@
                 </div>
               </div>
               <!-- Get lists of Jobs -->
-              <div class="tab">
-                <h1 class="form__header">Jobs for you!</h1>
+              <div class="tab" id="Job View">
+                <h1 class="form__header">Final steps</h1>
                 <h4 class="form__sub">
-                  These are some of the jobs we think fit best to you!
+                  Please enter the location and salary of your dream job!
                 </h4>
-                <p v-for="(file, index) in files" :key="index">
-                  {{ file.name }}
-                </p>
+                <div class="input-container">
+                  <label for="dropdown" class="form__label"
+                    >Enter a location</label
+                  >
+                  <input
+                    id="location-input"
+                    list="location-list"
+                    class="form__input"
+                    v-model="formData.location"
+                  />
+                  <datalist id="location-list">
+                    <option
+                      v-for="(location, index) in locations"
+                      :key="index"
+                      :value="location.title"
+                    ></option>
+                  </datalist>
+
+                  <label for="salary" class="form__label">Enter a Salary</label>
+                  <input
+                    id="salary"
+                    type="text"
+                    class="form__input"
+                    disabled
+                    placeholder="not yet implemented"
+                  />
+                </div>
               </div>
-              <!-- Select your profession -->
               <div class="tab">
                 <h1 class="form__header">Select your profession</h1>
                 <h4 class="form__sub">
@@ -181,9 +204,7 @@ export default {
   mounted() {
     this.showTab(this.currentTab);
   },
-  created() {
-    this.getSets();
-  },
+  created() {},
   methods: {
     showTab(n) {
       // This function will display the specified tab of the form ...
@@ -277,7 +298,6 @@ export default {
         data.append("file" + (x + 1), f);
       });
 
-      console.log(data);
       request.open("POST", "http://localhost:5000/send", true);
       request.send(data);
 
@@ -369,7 +389,7 @@ export default {
   &__label {
     font-size: 14px;
     font-weight: bold;
-    color: #fff;
+    color: var(--on-body);
   }
   &__head {
     max-height: 100px;
