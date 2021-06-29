@@ -278,7 +278,7 @@ export default {
       });
 
       console.log(data);
-      request.open("POST", "http://localhost:5000/file", true);
+      request.open("POST", "http://localhost:5000/send", true);
       request.send(data);
 
       e.preventDefault();
