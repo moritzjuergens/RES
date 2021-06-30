@@ -39,14 +39,18 @@ export default {
       jobs: [],
     };
   },
+  props: {
+    jobtitle: String,
+  },
   created() {
     this.getJobs();
   },
   methods: {
     getJobs() {
       const path = "http://localhost:5000/jobs";
+      var payload = JSON.stringify(this.jobtitle);
       axios
-        .get(path)
+        .post(path, payload)
         .then((res) => {
           this.jobs = res.data.jobs;
         })

@@ -140,38 +140,27 @@
                 </div>
               </div>
               <div class="tab">
-                <h1 class="form__header">Select your profession</h1>
+                <h1 class="form__header">We have found a job category</h1>
                 <h4 class="form__sub">
-                  Either select one of our pre-sets or link the job posting and
-                  we'll figure it out from there!
+                  Our algorithm has picked out a job category based on your
+                  Resume. Please click the submit button to view fitting jobs in
+                  your area!
                 </h4>
-                <div class="input-container">
-                  <label for="dropdown" class="form__label"
-                    >Select a pre-set</label
-                  >
-                  <input
-                    id="preset-input"
-                    list="preset-list"
-                    class="form__input"
-                    v-model="formData.preset"
-                  />
-                  <datalist id="preset-list">
-                    <option
-                      v-for="(preset, index) in presets"
-                      :key="index"
-                      :value="preset.title"
-                    ></option>
-                  </datalist>
-
-                  <label for="link" class="form__label"
-                    >Link the job posting</label
-                  >
-                  <input type="text" class="form__input" />
-                </div>
+                <p class="form__sub" v-html="predictedJob">
+                  [default value. should not appear]
+                </p>
               </div>
               <button class="form__button" id="nextBtn" @click="nextPrev(1)">
                 Next step
               </button>
+              <router-link
+                :to="{
+                  name: 'Jobs',
+                  params: { jobtitle: predictedJob },
+                }"
+                :jobtitle="predictedJob"
+                >Take a look!</router-link
+              >
             </div>
           </div>
         </form>
@@ -192,6 +181,11 @@ export default {
     return {
       currentTab: 0,
       presets: [],
+      predictedJob: "",
+      sanitycheck: {
+        message: "",
+        status: "",
+      },
       tabs: document.getElementsByClassName("tab"),
       files: [],
       formData: {
@@ -298,8 +292,10 @@ export default {
         data.append("file" + (x + 1), f);
       });
 
-      request.open("POST", "http://localhost:5000/send", true);
+      request.open("POST", "http://localhost:5000/send", false);
       request.send(data);
+      this.predictedJob = request.response;
+      console.log(request.responseText);
 
       e.preventDefault();
       e.stopPropagation();
