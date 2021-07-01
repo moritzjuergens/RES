@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getJobs() {
-      const path = "http://res-mmg-backend.herokuapp.com/jobs";
+      const path = "https://res-mmg-backend.herokuapp.com/jobs";
       var payload = JSON.stringify(this.jobtitle);
       console.log(payload);
       axios
