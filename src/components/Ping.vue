@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     async getMessage() {
-      const path = "http://127.0.0.1:5000/ping";
+      const path = "https://res-mmg-backend.herokuapp.com/ping";
       await axios
         .get(path)
         .then((res) => {
