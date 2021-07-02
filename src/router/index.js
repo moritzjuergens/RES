@@ -49,7 +49,7 @@ const routes = [
     component: ()=> import("@/views/GetStarted.vue"),
   },
   {
-    path:"/jobs/:jobtitle",
+    path:"/jobs/:jobtitle/:location",
         name:"Jobs",
         component: ()=> import("@/views/Jobs.vue"),
         props: true

@@ -41,14 +41,20 @@ export default {
   },
   props: {
     jobtitle: String,
+    location: String,
   },
   created() {
     this.getJobs();
   },
   methods: {
     getJobs() {
-      const path = "https://res-mmg-backend.herokuapp.com/jobs";
-      var payload = JSON.stringify(this.jobtitle);
+      //   const path = "https://res-mmg-backend.herokuapp.com/jobs";
+      const path = "http://192.168.2.128:5000/jobs";
+      var payload = {
+        jobtitle: this.jobtitle,
+        location: this.location,
+      };
+      //   var payload = JSON.stringify(jobQuery);
       console.log(payload);
       axios
         .post(path, payload)

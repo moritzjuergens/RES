@@ -14,6 +14,7 @@
               class="form__button prev"
               id="prevBtn"
               @click="nextPrev(-1)"
+              v-if="this.currentTab != 0"
             >
               Back
             </button>
@@ -119,7 +120,7 @@
                     id="location-input"
                     list="location-list"
                     class="form__input"
-                    v-model="formData.location"
+                    v-model="jobQuery.location"
                   />
                   <datalist id="location-list">
                     <option
@@ -146,21 +147,34 @@
                   Resume. Please click the submit button to view fitting jobs in
                   your area!
                 </h4>
-                <p class="form__sub" v-html="predictedJob">
-                  [default value. should not appear]
-                </p>
+                <div
+                  class="input-container"
+                  style="justify-content: space-evenly"
+                >
+                  <p
+                    class="form__sub"
+                    id="predictedJob"
+                    v-html="jobQuery.predictedJob"
+                  >
+                    [default value. should not appear]
+                  </p>
+                  <router-link
+                    class="form__button router-link"
+                    :to="{
+                      name: 'Jobs',
+                      params: {
+                        jobtitle: jobQuery.predictedJob,
+                        location: jobQuery.location,
+                      },
+                    }"
+                    :jobtitle="jobQuery.predictedJob"
+                    >Take a look!</router-link
+                  >
+                </div>
               </div>
               <button class="form__button" id="nextBtn" @click="nextPrev(1)">
                 Next step
               </button>
-              <router-link
-                :to="{
-                  name: 'Jobs',
-                  params: { jobtitle: predictedJob },
-                }"
-                :jobtitle="predictedJob"
-                >Take a look!</router-link
-              >
             </div>
           </div>
         </form>
@@ -180,19 +194,17 @@ export default {
   data() {
     return {
       currentTab: 0,
-      presets: [],
-      predictedJob: "",
+      predictedJob: "[default value. should not appear]",
       sanitycheck: {
         message: "",
         status: "",
       },
+      jobQuery: {
+        predictedJob: "[default value. should not appear]",
+        location: "Berlin",
+      },
       tabs: document.getElementsByClassName("tab"),
       files: [],
-      formData: {
-        preset: "",
-        config: "",
-        read: [],
-      },
     };
   },
   mounted() {
@@ -204,14 +216,8 @@ export default {
       // This function will display the specified tab of the form ...
       this.tabs[n].style.display = "block";
 
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-
       if (n == this.tabs.length - 1) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
+        document.getElementById("nextBtn").style.display = "none";
       } else {
         document.getElementById("nextBtn").innerHTML = "Next step";
       }
@@ -220,10 +226,6 @@ export default {
     nextPrev(n) {
       this.tabs[this.currentTab].style.display = "none";
       this.currentTab = this.currentTab + n;
-      if (this.currentTab >= this.tabs.length) {
-        document.getElementById("nextBtn").type = "submit";
-        return false;
-      }
       this.showTab(this.currentTab);
     },
     fixStepIndicator(n) {
@@ -292,9 +294,10 @@ export default {
         data.append("file" + (x + 1), f);
       });
 
-      request.open("POST", "https://res-mmg-backend.herokuapp.com/send", false);
+      // request.open("POST", "https://res-mmg-backend.herokuapp.com/send", false);
+      request.open("POST", "http://127.0.0.1:5000/send", false);
       request.send(data);
-      this.predictedJob = request.response;
+      this.jobQuery.predictedJob = request.response;
       console.log(request.responseText);
 
       e.preventDefault();
@@ -490,5 +493,20 @@ export default {
 
 .box.is-dragover {
   background-color: grey;
+}
+
+.router-link {
+  padding: 5px 35px;
+  text-decoration: none;
+}
+.router-link:link,
+.router-link:visited {
+  color: white;
+  text-decoration: none;
+}
+#predictedJob {
+  font-size: 1.5rem;
+  padding: 0.1rem 0;
+  font-weight: bold;
 }
 </style>
