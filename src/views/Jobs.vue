@@ -48,8 +48,8 @@ export default {
   },
   methods: {
     getJobs() {
-      //   const path = "https://res-mmg-backend.herokuapp.com/jobs";
-      const path = "http://192.168.2.128:5000/jobs";
+      const path = "https://res-mmg-backend.herokuapp.com/jobs";
+
       var payload = {
         jobtitle: this.jobtitle,
         location: this.location,

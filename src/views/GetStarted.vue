@@ -294,8 +294,7 @@ export default {
         data.append("file" + (x + 1), f);
       });
 
-      // request.open("POST", "https://res-mmg-backend.herokuapp.com/send", false);
-      request.open("POST", "http://127.0.0.1:5000/send", false);
+      request.open("POST", "https://res-mmg-backend.herokuapp.com/send", false);
       request.send(data);
       this.jobQuery.predictedJob = request.response;
       console.log(request.responseText);
