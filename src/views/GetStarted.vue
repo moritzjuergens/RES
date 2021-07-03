@@ -183,7 +183,6 @@
   </div>
 </template>
 <script>
-// import axios from "axios";
 import Upload from "vue-material-design-icons/FileUpload.vue";
 
 export default {
@@ -213,9 +212,7 @@ export default {
   created() {},
   methods: {
     showTab(n) {
-      // This function will display the specified tab of the form ...
       this.tabs[n].style.display = "block";
-
       if (n == this.tabs.length - 1) {
         document.getElementById("nextBtn").style.display = "none";
       } else {
@@ -229,61 +226,12 @@ export default {
       this.showTab(this.currentTab);
     },
     fixStepIndicator(n) {
-      // This function removes the "active" class of all steps...
-      var x = document.getElementsByClassName("tab-nav__item"); //i
-      // for (i = 0; i < x.length; i++) {
-      //   x[i].className = x[i].className.replace(" active", "");
-      // }
-      //... and adds the "active" class to the current step:
+      var x = document.getElementsByClassName("tab-nav__item");
       x[n].className += " active";
     },
-
-    comments() {
-      // getSets() {
-      //   const path = "http://localhost:5000/pre";
-      //   axios
-      //     .get(path)
-      //     .then((res) => {
-      //       this.presets = res.data.pre;
-      //     })
-      //     .catch((error) => {
-      //       // eslint-disable-next-line
-      //       console.error(error);
-      //     });
-      // },
-      // initForm() {
-      //   (this.files = []), (this.formData.preset = "");
-      //   this.formData.config = "";
-      //   this.formData.read = [];
-      // },
-      // addData(payload) {
-      //   const path = "http://localhost:5000/pre";
-      //   axios
-      //     .post(path, payload)
-      //     .then(() => {
-      //       this.getSets();
-      //     })
-      //     .catch((error) => {
-      //       // eslint-disable-next-line
-      //       console.log(error);
-      //       this.getSets();
-      //     });
-      // },
-    },
-
     onSubmit(evt) {
       evt.preventDefault();
-      // let read = false;
-      // if (this.formData.read[0]) read = true;
-      // const payload = {
-      //   title: this.formData.preset,
-      //   config: "",
-      //   read,
-      // };
-      // this.addData(payload);
-      // this.initForm();
     },
-
     uploadFile(e) {
       var formElement = document.querySelector("#regForm"),
         request = new XMLHttpRequest(),
@@ -305,7 +253,6 @@ export default {
     addFile(e) {
       let droppedFiles = e.dataTransfer.files;
       if (!droppedFiles) return;
-      // this tip, convert FileList to array, credit: https://www.smashingmagazine.com/2018/01/drag-drop-file-uploader-vanilla-js/
       [...droppedFiles].forEach((f) => {
         this.files.push(f);
       });
@@ -317,8 +264,8 @@ export default {
 .container {
   width: 1000px;
   height: 500px;
-  background: var(--bg2);
-  border: 1px solid #3082ff;
+  background: var(--object-background-2);
+  border: 1px solid var(--color-brand);
   border-radius: 5px;
   box-shadow: #3083ff77 3px 5px 10px;
   display: flex;
@@ -334,20 +281,20 @@ export default {
   &__header {
     font-size: 1.5rem;
     text-align: left;
-    color: var(--on-body);
+    color: var(--body-background-txt);
     margin: 0;
   }
   &__sub {
     width: 55ch;
     text-align: left;
-    color: var(--on-body);
+    color: var(--body-background-txt);
     font-weight: lighter;
     margin: 10px 0;
   }
   &__grid {
     width: 100%;
     height: 80%;
-    border-top: 1px solid #3082ff;
+    border-top: 1px solid var(--color-brand);
     display: grid;
     grid-template-columns: 25% 75%;
 
@@ -365,8 +312,8 @@ export default {
     border: none;
     border-radius: 40px;
     font-weight: bold;
-    background: #3082ff;
-    color: white;
+    background: var(--color-brand);
+    color: var(--color-white-1);
     cursor: pointer;
 
     transition: all 0.2s ease;
@@ -376,18 +323,18 @@ export default {
     box-shadow: 0px 0px 10px #266edac9;
   }
   &__input {
-    background: var(--body);
+    background: var(--body-background);
     width: 300px;
     height: 20px;
     border: 1px solid #3082ff;
     border-radius: 5px;
     padding: 5px;
-    color: var(--on-body);
+    color: var(--body-background-txt);
   }
   &__label {
     font-size: 14px;
     font-weight: bold;
-    color: var(--on-body);
+    color: var(--body-background-txt);
   }
   &__head {
     max-height: 100px;
@@ -442,7 +389,7 @@ export default {
   }
 }
 .active {
-  background: #3082ff;
+  background: var(--color-brand);
   opacity: 1;
   transition: all 0.2s;
 }
@@ -451,16 +398,16 @@ export default {
   box-shadow: 0px 0px 20px #3083ff62;
 }
 #right-border {
-  border-right: 1px solid #3082ff;
+  border-right: 1px solid var(--color-brand);
   padding: 40px 0;
 }
 
 .box-input {
   width: 400px;
   height: 150px;
-  background: var(--body);
-  color: var(--on-body);
-  border: 1px solid #3082ff;
+  background: var(--body-background);
+  color: var(--body-background-txt);
+  border: 1px solid var(--color-brand);
   border-radius: 5px;
 
   display: flex;
@@ -480,7 +427,7 @@ export default {
   cursor: pointer;
 }
 .box__file:hover + label > strong:hover {
-  color: #a9ccff;
+  color: var(--highlight);
 }
 
 .box__dragndrop,
@@ -500,7 +447,7 @@ export default {
 }
 .router-link:link,
 .router-link:visited {
-  color: white;
+  color: var(--color-white-1);
   text-decoration: none;
 }
 #predictedJob {

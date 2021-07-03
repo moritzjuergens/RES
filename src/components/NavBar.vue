@@ -58,10 +58,10 @@ export default {
   justify-content: space-between;
 
   padding: 0 2% 0 5%;
-  background: #3082ff;
+  background: var(--color-brand);
   box-shadow: #00000030 0 0 10px;
   user-select: none;
-  color: white;
+  color: var(--color-white-1);
 
   &__brand {
     font-size: 2.6rem;
@@ -69,7 +69,7 @@ export default {
     a:visited,
     a:link {
       text-decoration: none;
-      color: white;
+      color: var(--color-white-1);
     }
   }
   &__links {
@@ -84,7 +84,7 @@ export default {
       a:link,
       a:visited {
         text-decoration: none;
-        color: white;
+        color: var(--color-white-1);
       }
     }
   }
@@ -92,7 +92,7 @@ export default {
     outline: none;
     border: none;
     background: none;
-    color: white;
+    color: var(--color-white-1);
     cursor: pointer;
   }
   &__icon:hover {

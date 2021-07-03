@@ -18,55 +18,85 @@ export default {
 </script>
 <style lang="scss">
 :root {
-  --bg: #3082ff;
-  --body: white;
-  --on-bg: whitesmoke;
-  --on-body: #2b2d4a;
-  --bg2: white;
-  --header: 0rem;
+  /*Colors*/
+
+  --color-brand: #3082ff;
+
+  /*Black Colors*/
+  --color-white-1: white;
+  --color-white-2: whitesmoke;
+  --color-black-1: #000000;
+  --color-black-2: #1d1d1d;
+  --color-black-3: #24252a;
+
+  /*Gray Colors*/
+  --color-gray-1: #333333;
+  --color-gray-2: #4f4f4f;
+  --color-gray-3: #828282;
+  --color-gray-4: #bdbdbd;
+  --color-gray-5: #e0e0e0;
+
+  /*State Colors*/
+  --color-info: #4eb4ff;
+  --color-success: #17c33d;
+  --color-warning: #ffcb46;
+  --color-error: #e42020;
+
+  /*Typography*/
+
+  /* Headers */
+  --txt-header-1: 56px;
+  --txt-header-2: 48px;
+  --txt-header-3: 40px;
+  --txt-header-4: 32px;
+  --txt-header-5: 24px;
+  --txt-header-6: 20px;
+  /* Text */
+  --txt-text-l: 20px;
+  --txt-text-m: 18px;
+  --txt-text-n: 16px;
+  --txt-text-s: 14px;
+
+  --object-background: var(--color-brand);
+  --object-background-2: var(--color-white-1);
+  --body-background: var(--color-white-1);
+  --object-background-txt: var(--color-white-2);
+  --body-background-txt: var(--color-black-3);
   --highlight: rgb(212, 230, 248);
 }
 [data-theme="darkMode"] {
-  --bg: #2b2e4a;
-  --body: #363864;
-  --bg2: #2b2d4a;
-  --on-body: whitesmoke;
-  --on-bg: whitesmoke;
+  --object-background: #2b2e4a;
+  --object-background-2: var(--object-background);
+  --body-background: #363864;
+  --body-background-txt: var(--color-white-2);
+  --object-background-txt: var(--color-white-1);
   --highlight: #4f5064;
 }
-/*TODO: OS defined dark mode*/
 html {
-  background: var(--bg);
+  background: var(--object-background);
 }
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--body);
+  background-color: var(--body-background);
 }
-// }
-// @media (prefers-color-scheme: dark) {
-//   :root {
-//     --bg: #24252a;
-//     --on-bg: whitesmoke;
-//   }
-// }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--on-bg);
+  color: var(--object-background-txt);
 }
 .page {
   &__header {
     margin: 1%;
-    font-size: var(--header);
-    color: var(--on-body);
+    font-size: var(--txt-header-1);
+    color: var(--body-background-txt);
   }
   &__sub {
     margin: 1%;
-    font-size: var(--sub);
-    color: var(--on-body);
+    font-size: var(--txt-header-3);
+    color: var(--body-background-txt);
   }
 }
 .content,
@@ -93,21 +123,21 @@ body {
   padding: 5%;
   &__header {
     font-size: 3rem;
-    color: var(--on-body);
+    color: var(--body-background-txt);
     &--2 {
       font-size: 1.5rem;
-      color: var(--on-body);
+      color: var(--body-background-txt);
     }
   }
 }
 .content-bg-1 {
   padding: 50px;
-  background-color: var(--bg);
+  background-color: var(--object-background);
   &__header {
     font-size: 3rem;
     font-weight: bold;
     margin: 0 0 50px 0;
-    color: var(--on-bg);
+    color: var(--object-background-txt);
   }
 }
 .content-bg-1--ng {
@@ -115,7 +145,7 @@ body {
   position: relative;
   padding: 50px;
   margin: 5% 0;
-  background-color: var(--bg);
+  background-color: var(--object-background);
   overflow: visible;
   &:before,
   &:after {

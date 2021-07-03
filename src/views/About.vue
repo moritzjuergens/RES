@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .about {
   // height: 100vh;
-  color: whitesmoke;
+  color: var(--body-background-txt);
   display: flex;
   flex-direction: column;
   justify-content: center;

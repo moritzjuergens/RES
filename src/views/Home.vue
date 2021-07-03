@@ -7,7 +7,7 @@
             <h1 class="page__header">Welcome to RES</h1>
             <p class="page__sub">The Resumé Evaluation System</p>
             <router-link class="action-button" to="/get-started">
-              <p>Get started here!</p>
+              Get started here!
             </router-link>
           </div>
           <div class="img-container">
@@ -81,30 +81,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.file-upload {
-  color: var(--on-bg);
-  width: 60%;
-  height: 20vh;
-  padding: 50px;
-  border-radius: 12px;
-  border: var(--on-bg) 2px solid;
-  background: rgb(110, 185, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.3s ease-in-out;
-  p {
-    font-size: 1.2rem;
-  }
-  &:hover {
-    transform: scale(1.04);
-  }
-}
 .action-button {
   text-decoration: none;
   height: 50px;
   width: fit-content;
-  background: #3082ff;
+  background: var(--color-brand);
   border-radius: 20px;
   border: none;
   margin: 5%;
@@ -115,7 +96,7 @@ export default {
   justify-content: center;
 
   font-size: 1.5rem;
-  color: white;
+  color: var(--color-white-1);
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -205,7 +186,7 @@ export default {
 }
 .test {
   font-size: var(--p);
-  color: var(--on-body);
+  color: var(--body-background-txt);
   width: 40ch;
 }
 

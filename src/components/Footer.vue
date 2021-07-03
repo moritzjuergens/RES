@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>footer</p>
+    <p>Made you look!</p>
   </div>
 </template>
 <script>
@@ -11,8 +11,13 @@ export default {
 <style lang="scss" scoped>
 .footer {
   max-width: 100%;
-  background: var(--bg);
-  height: 100px;
-  color: var(--on-bg);
+  background: var(--object-background);
+  height: 5rem;
+  color: var(--object-background-txt);
+  display: flex;
+  place-content: center;
+}
+.footer > p {
+  font-size: var(--txt-text-s);
 }
 </style>

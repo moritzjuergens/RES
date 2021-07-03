@@ -1,10 +1,5 @@
 <template>
   <div class="content-bg-0" style="padding-top: 5vh">
-    <!-- <div class="headers">
-      <h1>Jobs for you</h1>
-      <h2>here are some jobs we think would fit you best!</h2>
-    </div> -->
-
     <div class="table-container">
       <table class="table">
         <tr class="table__row">
@@ -89,7 +84,7 @@ export default {
   &__header,
   &__data {
     font-size: 1rem;
-    color: var(--on-body);
+    color: var(--body-background-txt);
     text-align: left;
     padding: 15px;
 
@@ -112,8 +107,8 @@ export default {
   }
   &-container {
     width: 95vw;
-    background: var(--bg2);
-    border: 1px solid #3082ff;
+    background: var(--object-background-2);
+    border: 1px solid var(--color-brand);
     border-radius: 5px;
     box-shadow: #3083ff77 3px 5px 10px;
     display: flex;
@@ -130,7 +125,7 @@ export default {
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  background: #3082ff;
+  background: var(--color-brand);
   cursor: pointer;
 }
 </style>
