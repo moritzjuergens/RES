@@ -23,30 +23,32 @@
     <div class="content-bg-1--ng" id="first">
       <div class="container">
         <div class="container__item">
-          <h5 class="container__item__header">Rate your candidates</h5>
+          <h5 class="container__item__header" style="margin: 0">
+            What's behind the curtain
+          </h5>
           <p class="container__item__body">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
-            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
-            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
-            illum quo!
+            K-nearest neighbor algorithm is a classification method in which a
+            class assignment is carried out taking into account its nearest
+            neighbor. The learning part of things consist of sharing training
+            examples with our algorithm and getting predictions in return.
           </p>
         </div>
         <div class="container__item">
-          <h5 class="container__item__header">Check your Resumé</h5>
+          <h5 class="container__item__header">How we operate</h5>
           <p class="container__item__body">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
-            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
-            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
-            illum quo!
+            Our front-end website runs on the latest installment of Vue.js to
+            create an appealing and user friendly visual look. We developed our
+            backend with phyton using Flask as the framework of choice and
+            created a PoC via Google Colaboratory Notebook.
           </p>
         </div>
         <div class="container__item">
           <h5 class="container__item__header">All in one place</h5>
           <p class="container__item__body">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio
-            nostrum eum explicabo eveniet natus! Quis commodi nam et illo magnam
-            voluptates aliquam, neque voluptatibus dolores eius incidunt labore
-            illum quo!
+            Just upload your Resume in PDF format on the 'get started' screen
+            and receive a job recommendation right away! Not only can you see,
+            which job might fit best to you, but you also get an overview of
+            jobs in your area in one click!
           </p>
         </div>
       </div>
@@ -63,10 +65,10 @@
             id="img2"
           />
           <p class="test">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique
-            magnam beatae in hic facere dolores fuga rerum provident,
-            reprehenderit alias consectetur culpa nesciunt. Eius quo maiores
-            tenetur explicabo provident velit?
+            In the context of natural language processing, unstructured language
+            data is converted into a structured data format. This should enable
+            machines to identify and understand language and text in order to
+            subsequently generate relevant answers.
           </p>
         </div>
       </div>
@@ -188,6 +190,7 @@ export default {
   font-size: var(--p);
   color: var(--body-background-txt);
   width: 40ch;
+  text-align: left;
 }
 
 .img-container {
