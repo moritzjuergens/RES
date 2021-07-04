@@ -87,4 +87,9 @@ p {
   width: 70ch;
   text-align: left;
 }
+a:link,
+a:visited,
+a {
+  color: var(--color-info);
+}
 </style>
